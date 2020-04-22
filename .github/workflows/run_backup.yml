@@ -13,7 +13,8 @@ jobs:
     name: Backup
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout notes repo
+        uses: actions/checkout@v2
         with:
           repository: ${{ secrets.targetRepo }}
           token: ${{ secrets.roamPat }}
@@ -27,8 +28,7 @@ jobs:
           pip install git+https://github.com/MatthieuBizien/roam-to-git.git
       - name: Run backup
         run: |
-          roam-to-git --skip-git .
-          ls
+          roam-to-git .
         env:
           ROAMRESEARCH_USER: ${{ secrets.roamEmail }}
           ROAMRESEARCH_PASSWORD: ${{ secrets.roamPassword }}
