@@ -13,6 +13,20 @@ jobs:
     name: Backup
     timeout-minutes: 15
     steps:
+      - name: Cache pip
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Cache chrome
+        uses: actions/cache@v1
+        with:
+          path: ~/.local/share/pyppeteer/local-chromium
+          key: ${{ runner.os }}-chrome
+ 
       - name: Checkout notes repo
         uses: actions/checkout@v2
         with:
