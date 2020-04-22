@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: ${{ secrets.targeRepo }}
+          repository: ${{ secrets.targetRepo }}
       - name: Set up Python 3.8
         uses: actions/setup-python@v1
         with:
