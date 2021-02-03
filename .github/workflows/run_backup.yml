@@ -25,10 +25,10 @@ jobs:
       
       - name: Setup dependencies
         run: |
-          pip install git+https://github.com/MatthieuBizien/roam-to-git.git
+          pip install git+https://github.com/Stvad/roam-to-git.git@edn
       - name: Run backup
         run: |
-          roam-to-git .
+          roam-to-git . --formats json edn
         env:
           ROAMRESEARCH_USER: ${{ secrets.roamEmail }}
           ROAMRESEARCH_PASSWORD: ${{ secrets.roamPassword }}
