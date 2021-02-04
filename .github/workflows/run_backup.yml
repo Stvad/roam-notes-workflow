@@ -28,7 +28,8 @@ jobs:
           pip install git+https://github.com/Stvad/roam-to-git.git@edn
       - name: Run backup
         run: |
-          roam-to-git . --formats json edn
+          brew install borkdude/brew/jet # to do edn formatting. Note: MacOs specific
+          roam-to-git . --formats json edn markdown formatted
         env:
           ROAMRESEARCH_USER: ${{ secrets.roamEmail }}
           ROAMRESEARCH_PASSWORD: ${{ secrets.roamPassword }}
