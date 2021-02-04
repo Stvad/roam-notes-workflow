@@ -9,7 +9,7 @@ on:
 
 jobs:
   backup:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest # trying to workaound random crashes on linux
     name: Backup
     timeout-minutes: 15
     steps:
