@@ -29,7 +29,7 @@ jobs:
           pip install git+https://github.com/Stvad/roam-to-git.git@edn
       - name: Run backup
         run: |
-          roam-to-git . --formats json edn markdown formatted
+          roam-to-git . --formats json edn
         env:
           ROAMRESEARCH_USER: ${{ secrets.roamEmail }}
           ROAMRESEARCH_PASSWORD: ${{ secrets.roamPassword }}
