@@ -5,11 +5,11 @@ on:
     branches:
       - master
   schedule:
-    - cron: "*/10 * * * *" #doesn't actually :( Am I getting throttled? test
+    - cron: "*/10 * * * *" #doesn't actually consistently run every 10 min =\
 
 jobs:
   backup:
-    runs-on: macos-latest # trying to workaound random crashes on linux
+    runs-on: ubuntu-latest # trying to workaound random crashes on linux
     name: Backup
     timeout-minutes: 15
     steps:
@@ -25,11 +25,13 @@ jobs:
       
       - name: Setup dependencies
         run: |
-          brew install borkdude/brew/jet # to do edn formatting. Note: MacOs specific
-          pip install git+https://github.com/Stvad/roam-to-git.git@edn
+          wget -qO /tmp/jet.zip https://github.com/borkdude/jet/releases/download/v0.0.13/jet-0.0.13-linux-amd64.zip
+          unzip /tmp/jet.zip -d /tmp
+          sudo mv /tmp/jet /usr/local/bin/jet
+          pip install git+https://github.com/MatthieuBizien/roam-to-git.git
       - name: Run backup
         run: |
-          roam-to-git . --formats json edn
+          roam-to-git . --formats json edn markdown
         env:
           ROAMRESEARCH_USER: ${{ secrets.roamEmail }}
           ROAMRESEARCH_PASSWORD: ${{ secrets.roamPassword }}
