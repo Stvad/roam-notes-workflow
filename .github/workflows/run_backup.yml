@@ -25,9 +25,9 @@ jobs:
       
       - name: Setup dependencies
         run: |
-          wget -qO /tmp/jet.zip https://github.com/borkdude/jet/releases/download/v0.0.13/jet-0.0.13-linux-amd64.zip
-          unzip /tmp/jet.zip -d /tmp
-          sudo mv /tmp/jet /usr/local/bin/jet
+          #wget -qO /tmp/jet.zip https://github.com/borkdude/jet/releases/download/v0.0.13/jet-0.0.13-linux-amd64.zip
+          #unzip /tmp/jet.zip -d /tmp
+          #sudo mv /tmp/jet /usr/local/bin/jet
           pip install git+https://github.com/MatthieuBizien/roam-to-git.git
       - name: Run backup
         run: |
