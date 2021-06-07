@@ -29,9 +29,10 @@ jobs:
           #unzip /tmp/jet.zip -d /tmp
           #sudo mv /tmp/jet /usr/local/bin/jet
           pip install git+https://github.com/MatthieuBizien/roam-to-git.git
-      - name: Download markdown images for previous backup
+# removing as it logs sensetive information
+#     - name: Download markdown images for previous backup
         # not commiting the changes to md files with this =\, should be possible to recover things by deconding the base64 of file names 
-        run: npx markdown-backup "markdown/**/*.md"
+#        run: npx markdown-backup "markdown/**/*.md"
       - name: Run backup
         run: |
           roam-to-git . --formats json edn markdown
