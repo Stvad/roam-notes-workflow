@@ -14,12 +14,12 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout notes repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.5.2
         with:
           repository: ${{ secrets.targetRepo }}
           token: ${{ secrets.roamPat }}
       - name: Set up Python 3.8
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4.6.0
         with:
           python-version: 3.8
       
