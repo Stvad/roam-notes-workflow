@@ -37,7 +37,8 @@ jobs:
 #        run: npx markdown-backup "markdown/**/*.md"
       - name: Run backup
         run: |
-          roam-to-git . --formats json edn markdown
+          roam-to-git . --formats json edn #markdown
+          # no markdown for now bc I have page names that are too long and that crashes the backup
         env:
           ROAMRESEARCH_USER: ${{ secrets.roamEmail }}
           ROAMRESEARCH_PASSWORD: ${{ secrets.roamPassword }}
