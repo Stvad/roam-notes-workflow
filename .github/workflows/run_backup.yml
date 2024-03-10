@@ -9,7 +9,8 @@ on:
 
 jobs:
   backup:
-    runs-on: "Ubuntu-20.04" # trying to workaound random crashes on linux
+    #runs-on: "Ubuntu-20.04" # trying to workaound random crashes on linux
+    runs-on: ubuntu-latest
     name: Backup
     timeout-minutes: 15
     steps:
