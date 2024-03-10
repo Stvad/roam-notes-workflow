@@ -29,7 +29,7 @@ jobs:
           #unzip /tmp/jet.zip -d /tmp
           #sudo mv /tmp/jet /usr/local/bin/jet
           # https://github.com/MatthieuBizien/roam-to-git/pull/112
-          pip install "git+https://github.com/caffo/roam-to-git.git@7156918a0d1e1f1a8bd9ba8e1c8ff9dbb1d85f39"
+          pip install "git+https://github.com/MatthieuBizien/roam-to-git.git@2381924739a6f848165c483d6d0a2af3cdca1916"
 # removing as it logs sensetive information
 #     - name: Download markdown images for previous backup
         # not commiting the changes to md files with this =\, should be possible to recover things by deconding the base64 of file names 
