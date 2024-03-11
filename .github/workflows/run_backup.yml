@@ -38,11 +38,16 @@ jobs:
 #        run: npx markdown-backup "markdown/**/*.md"
       - name: Run backup
         run: |
-          roam-to-git . --formats json #edn #markdown
+          roam-to-git . --skip-git --formats json #edn #markdown
           # no markdown for now bc I have page names that are too long and that crashes the backup
           # disabling edn to try to speed up git push
         env:
           ROAMRESEARCH_USER: ${{ secrets.roamEmail }}
           ROAMRESEARCH_PASSWORD: ${{ secrets.roamPassword }}
           ROAMRESEARCH_DATABASE: ${{ secrets.roamDatabase }}
+      - name: Split in chunks
+        run: input="json/stvad.json"; split_size=1000; seq 0 $split_size $(jq length $input) | xargs -I{} sh -c "jq '.[{}:({}+$split_size)]' $input > json/stvad_{}.json" && rm json/stvad.json
+      - name: git things
+        run: git add . && git commit -m "automated snapshot" && git push
+      
           
