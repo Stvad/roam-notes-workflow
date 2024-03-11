@@ -1,6 +1,7 @@
 name: "Roam Research backup"
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
