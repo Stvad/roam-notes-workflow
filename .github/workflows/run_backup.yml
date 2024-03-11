@@ -48,6 +48,6 @@ jobs:
       - name: Split in chunks
         run: input="json/stvad.json"; split_size=1000; seq 0 $split_size $(jq length $input) | xargs -I{} sh -c "jq '.[{}:({}+$split_size)]' $input > json/stvad_{}.json" && rm json/stvad.json
       - name: git things
-        run: git add . && git commit -m "automated snapshot" && git push
+        run: git add . && git -c user.name="Vlad (via github actions)" -c user.email="vlad@sitalo.org" commit -m "automated snapshot" && git push
       
           
